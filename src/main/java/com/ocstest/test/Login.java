@@ -33,7 +33,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Login extends BaseJobs {
+public class Login {
 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -125,7 +125,8 @@ public class Login extends BaseJobs {
 		}
 
 		// 可以添加多个用户
-		String jlc[] = { URLEncoder.encode("贱男春"), "jiannancun@*.cn", "888888" };
+		String jlc[] = { URLEncoder.encode("贱男春", "UTF-8"), "jiannancun@*.cn",
+				"888888" };
 		List<String[]> list = new ArrayList<String[]>();
 		list.add(jlc);
 
@@ -144,7 +145,8 @@ public class Login extends BaseJobs {
 			for (Element td : tds) {
 				// 取前25行内容 前25行内容显示的是昨天和今天的考勤记录
 				if (i < 25) {
-					html += td.text().replace(u[2], URLDecoder.decode(u[0]))
+					html += td.text().replace(u[2],
+							URLDecoder.decode(u[0], "UTF-8"))
 							+ "<br>";
 				} else
 					break;
